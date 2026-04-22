@@ -1,0 +1,280 @@
+prg 2
+
+#!/bin/bash
+
+#1. Create a nested directory structure
+
+mkdir -p project/year2025/month07/week1
+
+#2. Create multiple text files using a loop
+
+cd project/year2025/month07/weekl
+
+for i in {1..5}
+
+do
+
+touch file$i.txt
+
+done
+
+#3. Move and rename files to archive directory
+
+Mkdir -p archive
+
+count=1
+
+for file in file*.txt
+
+do
+
+mv "$file" "archive/archived$count.txt"
+
+count=$((count + 1))
+
+done
+
+#4. Copy the archive directory to backup location
+
+cp -r archive../backup
+
+#5. Delete all .txt files from archive directory
+
+ORNSIT-CSE Bengaluru
+
+rm archive/*.txt
+
+echo "File and directory operations completed successfully."
+
+
+
+prg 3
+
+
+
+#!/bin/bash
+
+echo "Step 1: Creating sample file example.txt"
+
+touch example.txt
+
+echo
+
+echo "Step 2: Original permissions of the file:"
+
+ls -l example.txt
+
+echo
+
+echo "Step 3: Changing permissions using symbolic mode (add execute for user)"
+
+chmod u+x example.txt
+
+echo "Permissions after symbolic mode change:"
+
+ls -l example.txt
+
+echo
+
+echo "Step 4: Changing permissions using numeric mode (754)"
+
+chmod 754 example.txt
+
+echo "Permissions after numeric mode change:"
+
+ls -l example.txt
+
+echo
+
+# Optional ownership change (requires sudo/root)
+
+if [ "$(id-u)" -eq 0 ]; then
+
+echo "Step 5: Changing ownership of the file"
+
+chown nobody:nogroup example.txt
+
+echo "Ownership after change:"
+
+ls -l example.txt
+
+else
+
+echo "Step 5: Ownership change skipped (run as root to enable)" fi
+
+echo
+
+echo "Permission and ownership demonstration completed."
+
+
+
+prg 4
+
+
+
+#!/bin/bash
+
+echo "1. Displaying the contents of the file (cat):"
+
+cat students.txt
+
+echo
+
+echo "2. Displaying the first 3 lines (head):"
+
+head -n 3 students.txt
+
+echo
+
+echo "3. Displaying the last 2 lines (tail):"
+
+tail -n 2 students.txt
+
+echo
+
+echo "4. Extracting and displaying only student names (cut):"
+
+cut -f2 students.txt
+
+echo
+
+echo "5. Converting all student names to uppercase (tr):"
+
+cut -f2 students.txt | tr '[:lower:]' '[:upper:]'
+
+echo
+
+echo "6. Sorting data based on marks in ascending order (sort):"
+
+sort -k4-n students.txt
+
+echo
+
+echo "7. Displaying unique departments (cut, sort, uniq):"
+
+cut -f3 students.txt | sort | uniq
+
+echo
+
+echo "8. Students who scored more than 80 marks (awk):"
+
+awk -F'\t' '$4 > 80 {print $2}' students.txt
+
+echo
+
+echo "9. Replacing department name 'Computer' with 'CSE' (sed):" sed 's/Computer/CSE/g' students.txt
+
+echo
+
+
+prg 5
+
+Shell Script: I/O Redirection and Pipelines
+
+#!/bin/bash
+
+echo "----- Input File Content (data.txt)------"
+
+cat data.txt
+
+echo
+
+echo "----- Step 1 to 5: Filtering, extracting, transforming, and saving names------"
+
+# Input redirection (<), pipelines (1), and tee
+
+grep "Computer" < data.txt |\
+
+cut -d','-f2
+
+tr'[:lower:]' '[:upper:]' |\
+
+tee filtered names.txt
+
+echo
+
+echo "Intermediate output saved to filtered names.txt"
+
+echo
+
+echo "----- Step 6 & 7: Sorting and counting names---
+
+#Output redirection (>)
+
+sort filtered names.txt | uniq-c> final_output.txt
+
+# Display final output on terminal
+
+cat final_output.txt
+
+echo
+
+echo "Final output also saved to final_output.txt"
+
+
+prg 6
+
+echo # 1(i). Search for files with a specific name
+
+echo "1(i). Searching for files named report.txt:"
+
+find. -type f-name "report.txt"
+
+echo
+
+#1(ii). Search for files of specific types
+
+echo "1(ii). Searching for directories:"
+
+find. -type d
+
+echo
+
+echo "1(ii). Searching for symbolic links:"
+
+find. -type 1
+
+echo
+
+#1(iii). Search for files greater than IMB
+
+echo "1(iii). Searching for files larger than 1MB:"
+
+find. -type f-size +1M
+
+echo
+
+echo "==
+
+LOG FILE ERROR SEARCH
+
+echo
+
+#2. Search recursively for .log files and find ERROR lines
+
+echo "2(a). Searching for lines containing 'ERROR' in .log files:"
+
+grep -r --include="*.log" "ERROR".
+
+echo
+
+#2(b). Display filename and line number with matching line
+
+echo "2(b). Displaying filename and line number for each ERROR:"
+
+grep -r -n --include="*.log" "ERROR".
+
+echo
+
+#3. Save error search output to a file
+
+echo "3. Saving ERROR search output to error_report.txt"
+
+grep -r -n --include="*.log" "ERROR". > error_report.txt
+
+echo
+
+echo "Error report saved successfully in error_report.txt"
+
+echo "==
+
