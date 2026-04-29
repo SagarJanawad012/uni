@@ -278,3 +278,12 @@ echo "Error report saved successfully in error_report.txt"
 
 echo "==
 
+
+
+pre requirements for program 6
+dd if=/dev/zero of=bigfile.bin bs=1M count=2mkdir logs
+echo "ERROR: File missing" > logs/test.logecho "ERROR: Database crash" > db.log
+echo "INFO: Started server" > server.log
+echo "ERROR: Timeout issue" >> server.logecho "This is a normal log line" > app.log
+echo "ERROR: Something failed" >> app.log
+echo "Another line" >> app.log
